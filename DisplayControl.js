@@ -12,13 +12,13 @@ function displayControl(state) {
 
 		case "win32": {
 
-			if (state == "off"){
+			if (state === "off"){
 
 				turnOff();
-				turnOn();
 
-			}else{
-
+			}
+			else
+			{
 				turnOn();
 
 			}
@@ -73,6 +73,8 @@ function turnOff() {
 
 		SendMessageW: ["int", ["ulong", "uint", "long", "long"]]
 
+
+
 	});
 
 
@@ -93,25 +95,6 @@ function turnOff() {
 
 function turnOn() {
 
-	// Credits: http://www.powershellmagazine.com/2013/07/18/pstip-how-to-switch-off-display-with-powershell/
-
-	//
-
-	//     Turn display off by calling WindowsAPI.
-
-	//
-
-	//     SendMessage(HWND_BROADCAST,WM_SYSCOMMAND, SC_MONITORPOWER, POWER_OFF)
-
-	//     HWND_BROADCAST  0xffff
-
-	//     WM_SYSCOMMAND   0x0112
-
-	//     SC_MONITORPOWER 0xf170
-
-	//     POWER_OFF       0x0002
-
-
 
 	const ffi = require("ffi");
 
@@ -119,8 +102,8 @@ function turnOn() {
 
 	const user32 = ffi.Library("user32", {
 
-		SendMessageW: ["int", ["ulong", "uint", "long", "long"]]
-
+		SendMessageW: ["int", ["ulong", "uint", "long", "long"]],
+		mouse_event: ['void', ['int', 'int', 'int', 'int', 'int']]
 	});
 
 
@@ -135,7 +118,8 @@ function turnOn() {
 
 
 
-	user32.SendMessageW(HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, POWER_OFF);
+	//user32.SendMessageW(HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, POWER_OFF);
+	user32.mouse_event(4, 0 ,0 ,0 ,0);
 
 }
 
