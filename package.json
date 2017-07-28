@@ -1,0 +1,23 @@
+{
+  "name": "display-control-with-js",
+  "version": "1.0.1",
+  "description": "control your display by win32 api",
+  "main": "app.js",
+  "dependencies": {
+    "ffi": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andy51002000/display-control-with-js.git"
+  },
+  "author": "andy lai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andy51002000/display-control-with-js/issues"
+  },
+  "homepage": "https://github.com/andy51002000/display-control-with-js#readme"
+}
